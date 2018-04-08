@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SmartHome</title>
+            <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+            <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="@routes.Assets.at("UI/bower_components/bootstrap/dist/css/bootstrap.min.css")">
+            <!-- Font Awesome -->
+        <link rel="stylesheet" href="@routes.Assets.at("UI/bower_components/font-awesome/css/font-awesome.min.css")">
+            <!-- Ionicons -->
+        <link rel="stylesheet" href="@routes.Assets.at("UI/bower_components/Ionicons/css/ionicons.min.css")">
+            <!-- Theme style -->
+        <link rel="stylesheet" href="@routes.Assets.at("UI/dist/css/AdminLTE.min.css")">
+            <!-- Material Design -->
+        <link rel="stylesheet" href="@routes.Assets.at("UI/dist/css/bootstrap-material-design.min.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("UI/dist/css/ripples.min.css")">
+        <link rel="stylesheet" href="@routes.Assets.at("UI/dist/css/MaterialAdminLTE.min.css")">
+            <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="@routes.Assets.at("UI/dist/css/skins/all-md-skins.min.css")">
+            <!-- Morris chart -->
+        <link rel="stylesheet" href="@routes.Assets.at("UI/bower_components/morris.js/morris.css")">
+            <!-- jvectormap -->
+        <link rel="stylesheet" href="@routes.Assets.at("UI/bower_components/jvectormap/jquery-jvectormap.css")">
+            <!-- bootstrap wysihtml5 - text editor -->
+        <link rel="stylesheet" href="@routes.Assets.at("UI/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")">
+  <![endif]-->
+        <style>
+        body {
+            padding: 10px;
+            margin: 0px;
+        }
+
+        .clear:before,
+        .clear:after {
+            content: "";
+            display: table;
+        }
+
+        .clear:after {
+            clear: both;
+        }
+
+        .clear {
+            *zoom: 1;
+        }
+
+        .gauge {
+            display: block;
+            float: left;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            margin: 0 0 1% 0;
+        }
+
+        .size-1 {
+            width: 20%;
+        }
+
+        .size-2 {
+            width: 30%;
+        }
+
+        .size-3 {
+            width: 48%;
+        }
+
+        .h-split {
+            display: block;
+            float: left;
+            width: 1%;
+            min-height: 100px;
+        }
+    </style>
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini">
+
+                <!-- Main content -->
+            <section class="content">
+        <h3 align="center">Smart Home Untuk Praktikum Algoritma dan Struktur Data</h3>
+        <div class="box box-primary">
+            <div class="box-body box-profile">
+                <h3 class="box-title">Lampu</h3>
+                <div class="box-header with-border">
+                    <button id="nyalakan_lampu" class="btn bg-purple margin">Nyala</button>&nbsp;<button id="matikan_lampu" class="btn bg-maroon margin">Mati</button>
+                </div>
+            </div>
+        </div>
+        <div class="box box-primary">
+            <div class="box-body box-profile">
+                <h3 class="box-title">Sensor Suhu</h3>
+                <div class="box-header with-border">
+                    <div id="sensor_suhu" class="gauge size-3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-primary">
+            <div class="box-body box-profile">
+                <h3 class="box-title">Sensor Kelembaban</h3>
+                <div class="box-header with-border">
+                    <div id="sensor_kelembaban" class="gauge size-3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-primary">
+            <div class="box-body box-profile">
+                <h3 class="box-title">Sensor PIR</h3>
+                <div class="box-header with-border">
+                    <h4>Deteksi Pergerakan : Ada/Tidak Ada</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-primary">
+            <br><h4 align="center"><strong>Copyright &copy; 2018 Chulqy Rasyid H NIM : H1A015038</strong></h4><br>
+        </div>
+    </section>
+        <script src="@routes.Assets.at("justgage/raphael-2.1.4.min.js")"></script>
+        <script src="@routes.Assets.at("justgage/justgage.js")"></script>
+        <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var sensor_suhu, sensor_kelembaban;
+        var defs_sensor_suhu = {
+            label: "Suhu",
+            value: 35,
+            min: 0,
+            max: 100,
+            decimals: 0,
+            gaugeWidthScale: 0.6,
+            pointer: true,
+            pointerOptions: {
+                toplength: 5,
+                bottomlength: 15,
+                bottomwidth: 2
+            },
+            counter: true,
+            donut: true,
+            relativeGaugeSize: true
+        }
+
+        var defs_sensor_kelembaban = {
+            label: "Kelembaban",
+            value: 80,
+            min: 0,
+            max: 100,
+            decimals: 0,
+            gaugeWidthScale: 0.6,
+            pointer: true,
+            pointerOptions: {
+                toplength: 5,
+                bottomlength: 15,
+                bottomwidth: 2
+            },
+            counter: true,
+            donut: true,
+            relativeGaugeSize: true
+        }
+        sensor_suhu = new JustGage({
+            id: "sensor_suhu",
+            defaults: defs_sensor_suhu
+        });
+
+        sensor_kelembaban = new JustGage({
+            id: "sensor_kelembaban",
+            defaults: defs_sensor_kelembaban
+        });
+    });
+    </script>
+</body>
+</html>
